@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>jourmap docs</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                radial-gradient(circle at top, #2a2f45 0%, #12151f 45%, #090b11 100%);
+
+            color: white;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.15);
+            border-radius: 999px;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+
+            position: sticky;
+            top: 0;
+
+            height: 100vh;
+
+            padding: 28px;
+
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(12px);
+
+            border-right: 1px solid rgba(255,255,255,0.08);
+
+            overflow-y: auto;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            margin: 0;
+
+            font-size: 2rem;
+
+            background: linear-gradient(90deg, white, #9cc7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo p {
+            margin-top: 8px;
+            opacity: 0.65;
+            line-height: 1.5;
+        }
+
+        .nav-section {
+            margin-bottom: 30px;
+        }
+
+        .nav-title {
+            margin-bottom: 10px;
+
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            opacity: 0.5;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.82);
+
+            padding: 12px 14px;
+
+            border-radius: 14px;
+
+            transition:
+                background 0.18s ease,
+                transform 0.18s ease,
+                color 0.18s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(4px);
+
+            color: white;
+        }
+
+        /* MAIN CONTENT */
+
+        .content {
+            flex: 1;
+            padding: 50px;
+            max-width: 1200px;
+        }
+
+        .hero {
+            margin-bottom: 60px;
+
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 28px;
+
+            padding: 40px;
+
+            backdrop-filter: blur(10px);
+
+            box-shadow:
+                0 0 30px rgba(0,0,0,0.25),
+                inset 0 0 30px rgba(255,255,255,0.03);
+        }
+
+        .hero h2 {
+            margin-top: 0;
+            margin-bottom: 18px;
+
+            font-size: 3rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            max-width: 850px;
+
+            opacity: 0.78;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* ARTICLE SECTIONS */
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-card {
+            background: rgba(255,255,255,0.04);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 24px;
+
+            padding: 32px;
+
+            backdrop-filter: blur(10px);
+
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-2px);
+
+            border-color: rgba(120,170,255,0.25);
+
+            background: rgba(255,255,255,0.055);
+        }
+
+        .section-card h3 {
+            margin-top: 0;
+            margin-bottom: 18px;
+
+            font-size: 2rem;
+        }
+
+        .section-card p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 18px;
+
+            margin-top: 24px;
+        }
+
+        .info-box {
+            padding: 20px;
+
+            border-radius: 18px;
+
+            background: rgba(255,255,255,0.05);
+
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .info-box h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            margin: 0;
+            opacity: 0.72;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+
+                position: relative;
+
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+            }
+
+            .content {
+                padding: 24px;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h1>jourmap</h1>
+
+                <p>
+                    Information catalogue, such as a guide to usage and plans.
+                </p>
+            </div>
+
+            <div class="nav-section">
+
+                <div class="nav-title">
+                    Overview
+                </div>
+
+                <div class="nav-links">
+                    <a href="#capabilities">Capabilities</a>
+                    <a href="#usages">Usages</a>
+                </div>
+
+            </div>
+
+            <div class="nav-section">
+
+                <div class="nav-title">
+                    Systems
+                </div>
+
+                <div class="nav-links">
+                    <a href="#mapping">Mapping</a>
+                    <a href="#routing">Routing</a>
+                    <a href="#searching">Searching</a>
+                    <a href="#safety">Safety</a>
+                </div>
+
+            </div>
+
+            <div class="nav-section">
+
+                <div class="nav-title">
+                    Misc
+                </div>
+
+                <div class="nav-links">
+                    <a href="#future">Future Plans & Ideas</a>
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+
+        <main class="content">
+
+            <div class="hero">
+
+                <h2>
+                    jourmap - A space pioneers indexer
+                </h2>
+
+                <p>
+                    jourmap is the most powerful Space Pioneers indexer out there.
+                    It can provide you with any resources you might need and can help you
+                    find your way out of bad situations, such as being stranded.
+                </p>
+
+            </div>
+
+            <!-- INTRO -->
+
+            <section id="introduction">
+
+                <div class="section-card">
+
+                    <h3>Capabilities</h3>
+
+                    <p>
+                        The jourmap database contains every
+                        single planet, moon, and star in
+                        Space Pioneers. This makes it the
+                        one and only SP indexer that has
+                        all unscrapable values catalogued.
+                        <br><br>
+                        It stems from x4index, which unlike this bot
+                        focused only on functionality, and not looks 
+                        or ease of use.
+                    </p>
+
+                    <div class="info-grid">
+                        <div class="info-box">
+                            <h4>Status</h4>
+                            <p>
+                                jourmap is actively updated.
+                            </p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>Focus</h4>
+                            <p>
+                                Looks, appeal, and functionality.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- WORLD -->
+
+            <section id="mapping">
+
+                <div class="section-card">
+            
+                    <h3>Mapping</h3>
+            
+                    <p>
+                        the j!map command is a powerful tool
+                        that allows one to create an accurate
+                        picture of an SP starmap while also
+                        being able to add more information to it
+                        via the use of jourmap's Parsing Language.
+                    </p>
+            
+                    <dl>
+                        <dt>• zoom: number</dt>
+                        <dd>Controls the map's zoom</dd>
+                      
+                        <br>
+                      
+                        <dt>• target: int/galaxy/list</dt>
+                        <dd>Centers the camera around a star id or a galaxy (mw, lmc, smc, sdig) or if a two value list is provided, it will center on the x, y coordinates from it</dd>
+            
+                        <br>
+                      
+                        <dt>• line: {int, int}</dt>
+                        <dd>Draws a yellow line between two stars</dd>
+            
+                        <br>
+                      
+                        <dt>• route: {int, int, number}</dt>
+                        <dd>Pathfinds a route from the first star to the second, where each warp can't be longer than the third number (in parsecs)</dd>
+            
+                        <br>
+                      
+                        <dt>• qualityOverride: int</dt>
+                        <dd>Allows you to select a custom image quality. Default is 1000.</dd>
+            
+                        <br>
+                      
+                        <dt>• starRadiusOverride: number</dt>
+                        <dd>Changes the visual size of the stars on the image, in pixels</dd>
+            
+                        <br>
+                      
+                        <dt>• showStarIds: bool/int</dt>
+                        <dd>If a bool, then it will show a star id next to every drawn star. If an int, it will do the same but you get to pick the text size, in pt</dd>
+            
+                        <br>
+                      
+                        <dt>• colorCode: bool</dt>
+                        <dd>Determines if stars from different sectors will be colored differently</dd>
+            
+                        <br>
+                      
+                        <dt>• full: bool</dt>
+                        <dd>Overrides "target" and "zoom" variables, forcing the map to show every star in the database at once</dd>
+            
+                        <br>
+                      
+                        <dt>• hideSmoke: bool</dt>
+                        <dd>Hides the galactic smoke and glare</dd>
+            
+                        <br>
+                      
+                        <dt>• hideGlare: bool</dt>
+                        <dd>Hides the milky way nucleus glow</dd>
+            
+                        <br>
+                      
+                        <dt>• TEST&SET: bool</dt>
+                        <dd>Appends the parsed values of each other argument to the metadata output</dd>
+                    </dl>
+            
+                </div>
+            
+            </section>
+
+
+            <!-- FACTIONS -->
+
+            <section id="routing">
+
+                <div class="section-card">
+
+                    <h3>Routing</h3>
+
+                    <p>
+                        jourmap includes a pathfinder that 
+                        can help you find a way to any star 
+                        from your star even if you don't have 
+                        a hyperdrive. In SP, liquid fuel ships 
+                        can fly up to 3.5 parsecs distance,
+                        which enables you to just type 3.5 into 
+                        the route argument's last value and 
+                        see if maybe you aren't stranded after 
+                        all.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- TECH -->
+
+            <section id="searching">
+
+                <div class="section-card">
+
+                    <h3>Searching</h3>
+
+                    <p>
+                        the j!search command is an incredibly
+                        powerful jourmap command which will 
+                        evaluate your conditions and go through
+                        every single planet out there and check
+                        if it matches your criteria.
+                        This includes resources and moons, so
+                        you can find a perfect place for your nation
+                        in just a few seconds.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- NAVIGATION -->
+
+            <section id="safety">
+
+                <div class="section-card">
+
+                    <h3>Safety</h3>
+
+                    <p>
+                        Unlike x4index or x4alliance, jourmap's
+                        database is read-only. This makes it
+                        completely invulnerable to vandalism,
+                        and enables private usage.
+                        <br><br>
+                        You can use jourmap in your DMs, and 
+                        nobody will know what you're up to.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section id="future">
+
+                <div class="section-card">
+
+                    <h3>Future Plans & Ideas</h3>
+
+                    <p>
+                        This section is for me to leave
+                        notes and things I might want to add.
+
+                        • Planet appearances
+                        • Accurate orbital positions
+                        • Planet camera centering
+                        • Moon mapping
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
