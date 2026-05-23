@@ -1,1 +1,172 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willowself Home</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top, #2a2f45 0%, #12151f 45%, #090b11 100%);
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 0 30px rgba(0,0,0,0.35),
+                inset 0 0 30px rgba(255,255,255,0.03);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 3rem;
+            text-align: center;
+
+            background: linear-gradient(90deg, #ffffff, #9cc7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            opacity: 0.75;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            display: block;
+
+            padding: 22px;
+            border-radius: 18px;
+
+            text-decoration: none;
+            color: white;
+
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+
+            transition:
+                transform 0.18s ease,
+                background 0.18s ease,
+                border-color 0.18s ease,
+                box-shadow 0.18s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+
+            background: rgba(255,255,255,0.09);
+            border-color: rgba(120,170,255,0.5);
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.35),
+                0 0 18px rgba(120,170,255,0.2);
+        }
+
+        .card h2 {
+            margin: 0 0 10px;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            margin: 0;
+            opacity: 0.72;
+            line-height: 1.4;
+        }
+
+        footer {
+            margin-top: 35px;
+            text-align: center;
+            opacity: 0.45;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Willowself</h1>
+        <p class="subtitle">
+            Random projects, tools, and pages.
+        </p>
+
+        <div class="grid">
+
+            <a class="card" href="https://willowself.github.io/jourmap">
+                <h2>Jourmap</h2>
+                <p>
+                    Mapping/project page thing.
+                </p>
+            </a>
+
+            <a class="card" href="https://willowself.github.io/example">
+                <h2>Example</h2>
+                <p>
+                    Replace this with another project.
+                </p>
+            </a>
+
+            <a class="card" href="https://willowself.github.io/tools">
+                <h2>Tools</h2>
+                <p>
+                    Utilities and experiments.
+                </p>
+            </a>
+
+            <a class="card" href="https://willowself.github.io/gallery">
+                <h2>Gallery</h2>
+                <p>
+                    Images, renders, or whatever.
+                </p>
+            </a>
+
+        </div>
+
+        <footer>
+            willowself.github.io/home
+        </footer>
+    </div>
+
+</body>
+</html>
