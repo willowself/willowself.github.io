@@ -1,3 +1,5 @@
-theme: jekyll-theme-minimal
 title: Bytecode Software Docs
-description: Categorized arrangement of informational pages for the software developed by Bytecode
+email: byte.inbox@atomicmail.io
+description: An information library for software developed by Bytecode
+url: "https://willowself.github.io/"
+baseurl: "/home"
