@@ -386,7 +386,7 @@
                     <h3>Mapping</h3>
             
                     <p>
-                        the j!map command is a powerful tool
+                        the </code>j!map</code> command is a powerful tool
                         that allows one to create an accurate
                         picture of an SP starmap while also
                         being able to add more information to it
@@ -446,7 +446,12 @@
                       
                         <dt>• hideGlare: bool</dt>
                         <dd>Hides the milky way nucleus glow</dd>
-            
+
+                        <br>
+                      
+                        <dt>• forceSystemView: bool</dt>
+                        <dd>Forces the renderer to draw systems at any zoom above 2000</dd>
+                        
                         <br>
                       
                         <dt>• TEST&SET: bool</dt>
@@ -487,22 +492,51 @@
             <section id="searching">
 
                 <div class="section-card">
-
+                
                     <h3>Searching</h3>
-
+                
                     <p>
-                        the j!search command is an incredibly
-                        powerful jourmap command which will 
-                        evaluate your conditions and go through
-                        every single planet out there and check
-                        if it matches your criteria.
-                        This includes resources and moons, so
-                        you can find a perfect place for your nation
-                        in just a few seconds.
+                        The <code>j!search</code> command is an incredibly
+                        powerful Jourmap command which evaluates your conditions
+                        and searches through every planet to check if it matches
+                        your criteria.
+                
+                        This includes resources and moons, so you can find
+                        a perfect place for your nation in just a few seconds.
                     </p>
-
+                
+                    <p>
+                        Below are all the operators of the command.
+                        The rest of the syntax follows <code>j!map</code>.
+                    </p>
+                
+                    <dl class="operator-list">
+                        <dt>• ==</dt>
+                        <dd>Is Equal To</dd>
+                
+                        <dt>• !=</dt>
+                        <dd>Is Not Equal To</dd>
+                
+                        <dt>• &gt;</dt>
+                        <dd>More Than</dd>
+                
+                        <dt>• &lt;</dt>
+                        <dd>Less Than</dd>
+                
+                        <dt>• &gt;=</dt>
+                        <dd>More Than or Equal To</dd>
+                
+                        <dt>• &lt;=</dt>
+                        <dd>Less Than or Equal To</dd>
+                
+                        <dt>• @</dt>
+                        <dd>Does String Contain</dd>
+                
+                        <dt>• #</dt>
+                        <dd>Does String Not Contain</dd>
+                    </dl>
+                
                 </div>
-
             </section>
 
             <!-- NAVIGATION -->
